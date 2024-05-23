@@ -1,0 +1,39 @@
+"use client";
+
+// Imports
+import React from "react";
+import { useGlobalContext } from "@/app/Context/globalContext";
+import { Skeleton } from "@/components/ui/skeleton";
+import { unixToTime } from "@/app/Utilities/Misc";
+import { sunset } from "@/app/Utilities/Icons";
+
+function Sunset() {
+  // Providing forecast data from the global context
+  const { forecast } = useGlobalContext();
+
+    // Checking if sunset data is available, if not return loading screen
+    if (!forecast || !forecast?.sys) {
+      return <Skeleton className="h-[12rem] w-full" />;
+    }
+
+  // Retrieving sunset times and timezone for the location from the Open Weather API
+  const times = forecast?.sys?.sunset;
+  const timezone = forecast?.timezone;
+
+  // Destructuring data from the Open Weather API for use within the component
+  const sunsetTime = unixToTime(times, timezone);
+  const sunRiseTime = unixToTime(forecast?.sys?.sunrise, timezone);
+
+  // Rendering the sunset data in the client if the data is available
+  return (
+    <div className="pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
+      <div className="top">
+        <h2 className="flex items-center gap-2 font-medium">{sunset} Sunset</h2>
+        <p className="pt-4 text-2xl">{sunsetTime}</p>
+      </div>
+      <p>Sunrise: {sunRiseTime}</p>
+    </div>
+  );
+}
+
+export default Sunset;

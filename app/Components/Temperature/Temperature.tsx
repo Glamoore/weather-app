@@ -14,7 +14,7 @@ function Temperature() {
     // Destructuring data from the Open Weather API for use within the component
     const { main, timezone, name, weather } = forecast;
 
-    // Check if weather forecast data is available, if not return loading screen 
+    // Checking if weather forecast data is available, if not return loading screen 
   if (!forecast || !weather) {
     return <div>Loading...</div>;
   }
