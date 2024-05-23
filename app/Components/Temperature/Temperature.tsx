@@ -31,7 +31,7 @@ const [currentDay, setCurrentDay] = useState<string>("");
 // Descructuring forecast data for use
 const { main: weatherMain, description } = weather[0];
 
-//Weather condition icon imported from Lucide react within Icon/Utilities
+// Weather condition icons imported from Lucide react within Icon/Utilities
 const getIcon = () => {
     switch (weatherMain) {
       case "Drizzle":

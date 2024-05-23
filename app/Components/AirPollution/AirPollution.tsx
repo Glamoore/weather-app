@@ -12,9 +12,9 @@ function AirPollution() {
   // Retreiving air pollution data from the global context
   const { airQuality } = useGlobalContext();
 
-   // Providing forecast data from the global context
-   const { forecast } = useGlobalContext();
-   const { name } = forecast;
+  // Providing forecast data from the global context
+  const { forecast } = useGlobalContext();
+  const { name } = forecast;
 
   // Check if air quality data is available, if not return loading screen
   if (
@@ -36,16 +36,19 @@ function AirPollution() {
     return item.rating === airQualityIndex;
   });
 
-  console.log(filteredAirQualityIndex)
-
   // Rendering the air pollution data in the client if the data is available
   return (
-    <div className="air-pollution col-span-full sm-2:col-span-2 pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
+    <div
+      className="air-pollution pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8
+    dark:bg-dark-grey shadow-sm dark:shadow-none col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2"
+    >
       <h2 className="flex items-center gap-2 font-medium">
         {thermo} Air Pollution
       </h2>
       <Progress value={airQualityIndex} max={10} className="progress" />
-      <p>Air quality in {name} is {filteredAirQualityIndex?.description}.</p>
+      <p>
+        Air quality in {name} is {filteredAirQualityIndex?.description}.
+      </p>
     </div>
   );
 }

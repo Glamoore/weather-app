@@ -8,11 +8,14 @@ const GlobalContext = createContext();
 const GlobalContextUpdate = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
-  // Creatung a state to hold the weather forecast data from the Open Weather API for global use
+  // Creating a state to hold the weather forecast data from the Open Weather API for global use
   const [forecast, setForecast] = useState({});
 
-  // Creatung a state to hold the air pollution data from the Open Weather API for global use
+  // Creating a state to hold the air pollution data from the Open Weather API for global use
   const [airQuality, setAirQuality] = useState({});
+
+  // Creating a state to hold the five day forecast data from the Open Weather API for global use
+  const [dailyForecast, setDailyForecast] = useState({});
 
   // Using axios get request to retrieve the weather forecast data from Open Weather on initial render
   const fetchForecast = async () => {
@@ -40,10 +43,24 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
+  // Using axios get request to retrieve the five day forecast data from Open Weather on initial render
+
+  const fetchFiveDayForecast = async () => {
+    try {
+      const res = await axios.get("Api/FiveDayForecast");
+
+      console.log("Five Day Forecast", res.data);
+      setDailyForecast(res.data);
+    } catch (error) {
+      console.log("Error fetching five day forecast data", error.message);
+    }
+  };
+
   // Fetching data
   useEffect(() => {
     fetchForecast();
     fetchAirQuality();
+    fetchFiveDayForecast();
   }, []);
 
   // Sharing data with the rest of the app
@@ -52,6 +69,7 @@ export const GlobalContextProvider = ({ children }) => {
       value={{
         forecast,
         airQuality,
+        dailyForecast,
       }}
     >
       <GlobalContextUpdate.Provider>{children}</GlobalContextUpdate.Provider>
