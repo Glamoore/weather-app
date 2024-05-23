@@ -2,6 +2,7 @@
 import AirPollution from "./Components/AirPollution/AirPollution";
 import DailyWeatherForecast from "./Components/DailyWeatherForecast/DailyWeatherForecast";
 import FeelsLike from "./Components/Feelslike/FeelsLike";
+import Humidity from "./Components/Humidity/Humidity";
 import Navbar from "./Components/Navbar";
 import Population from "./Components/Population/Population";
 import Sunset from "./Components/Sunset/Sunset";
@@ -26,6 +27,7 @@ export default function Home() {
             <UvIndex />
             <Population />
             <FeelsLike />
+            <Humidity />
           </div>
         </div>
       </div>
