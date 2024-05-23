@@ -3,6 +3,7 @@ import AirPollution from "./Components/AirPollution/AirPollution";
 import DailyWeatherForecast from "./Components/DailyWeatherForecast/DailyWeatherForecast";
 import FeelsLike from "./Components/Feelslike/FeelsLike";
 import Humidity from "./Components/Humidity/Humidity";
+import Mapbox from "./Components/Mapbox/Mapbox";
 import Navbar from "./Components/Navbar";
 import Population from "./Components/Population/Population";
 import Pressure from "./Components/Pressure/Pressure";
@@ -11,6 +12,7 @@ import Temperature from "./Components/Temperature/Temperature";
 import UvIndex from "./Components/UvIndex/UvIndex";
 import Visibility from "./Components/Visibility/Visibility";
 import Wind from "./Components/Wind/Wind";
+import defaultCountries from "./Utilities/defaultCountries";
 
 export default function Home() {
   return (
@@ -32,6 +34,26 @@ export default function Home() {
             <Humidity />
             <Visibility />
             <Pressure />
+          </div>
+          <div className="mapbox-container mt-4 flex gap-4">
+            <Mapbox />
+            <div className="countries flex flex-col gap-3 flex-1">
+              <h2 className="flex items-center gap-2 font-medium">
+                Top Large Cities
+              </h2>
+              <div className="flex flex-col gap-4">
+                {defaultCountries.map((state, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="border rounded-lg cursor-pointer dark:bg-dark-grey shadow-sm dark:shadow-none"
+                    >
+                      <p className="px-6 py-4">{state.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
