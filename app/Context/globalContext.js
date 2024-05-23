@@ -17,50 +17,65 @@ export const GlobalContextProvider = ({ children }) => {
   // Creating a state to hold the five day forecast data from the Open Weather API for global use
   const [dailyForecast, setDailyForecast] = useState({});
 
-  // Using axios get request to retrieve the weather forecast data from Open Weather on initial render
+  // Creating a state to hold the five day forecast data from the Open Weather API for global use
+  const [uvIndex, setUvIndex] = useState({});
+
+  // Fetch the weather forecast data from the Open Weather API
   const fetchForecast = async () => {
     try {
       // API endpoint of the get request
       const res = await axios.get("Api/Weather");
 
-      // Storing weather forecast data to global state
+      // Storing the weather forecast data to its global state
       setForecast(res.data);
     } catch (error) {
       console.log("Error fetching forecast data: ", error.message);
     }
   };
 
-  // Using axios get request to retrieve the air pollution data from Open Weather on initial render
+  // Fetch air pollution data from the Open Weather API
   const fetchAirQuality = async () => {
     try {
       // API endpoint of the get request
       const res = await axios.get("Api/Pollution");
 
-      // Storing air pollution data to global state
+       // Storing the air pollution data to its global state
       setAirQuality(res.data);
     } catch (error) {
       console.log("Error retrieving air quality data: ", error.message);
     }
   };
 
-  // Using axios get request to retrieve the five day forecast data from Open Weather on initial render
-
+  // Fetch the five day forecast data from the Open Weather API
   const fetchFiveDayForecast = async () => {
     try {
       const res = await axios.get("Api/FiveDayForecast");
 
-      console.log("Five Day Forecast", res.data);
+      // Storing the five day forecast data to its global state
       setDailyForecast(res.data);
     } catch (error) {
       console.log("Error fetching five day forecast data", error.message);
     }
   };
 
-  // Fetching data
+  // Fetch the UV index data from the Open meteo API
+  const fetchUvIndex = async () => {
+    try {
+      const res = await axios.get("Api/Uv");
+
+      // Storing the UV index data to its global state
+      setUvIndex(res.data);
+    } catch (error) {
+      console.log("Error fetching the UV data", error.message);
+    }
+  };
+
+  // Initial fetch request for all API data
   useEffect(() => {
     fetchForecast();
     fetchAirQuality();
     fetchFiveDayForecast();
+    fetchUvIndex();
   }, []);
 
   // Sharing data with the rest of the app
@@ -70,6 +85,7 @@ export const GlobalContextProvider = ({ children }) => {
         forecast,
         airQuality,
         dailyForecast,
+        uvIndex,
       }}
     >
       <GlobalContextUpdate.Provider>{children}</GlobalContextUpdate.Provider>

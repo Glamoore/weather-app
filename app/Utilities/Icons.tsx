@@ -12,6 +12,8 @@ import {
   ThermometerSun,
   Sunset,
   Wind,
+  Sunrise,
+  Sun,
 } from "lucide-react";
 
 export const searchIcon = <SquareTerminal size={16} />;
@@ -25,3 +27,5 @@ export const navigation = <Navigation size={15} />;
 export const thermo = <ThermometerSun size={15} />;
 export const sunset = <Sunset size={15} />;
 export const wind = <Wind size={15} />;
+export const sunrise = <Sunrise size={15} />
+export const sun = <Sun size={15} />

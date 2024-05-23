@@ -5,18 +5,18 @@ import React from "react";
 import { useGlobalContext } from "@/app/Context/globalContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { unixToTime } from "@/app/Utilities/Misc";
-import { sunset } from "@/app/Utilities/Icons";
+import { sunrise, sunset } from "@/app/Utilities/Icons";
 
 function Sunset() {
-  // Providing forecast data from the global context
+  // Retreiving forecast data from the global context
   const { forecast } = useGlobalContext();
 
-    // Checking if sunset data is available, if not return loading screen
+    // Checking if sunset data is available, if not will return a loading screen
     if (!forecast || !forecast?.sys) {
       return <Skeleton className="h-[12rem] w-full" />;
     }
 
-  // Retrieving sunset times and timezone for the location from the Open Weather API
+  // Retrieving sunset times and timezone for the location from Open Weather API via the Global Context
   const times = forecast?.sys?.sunset;
   const timezone = forecast?.timezone;
 
@@ -31,7 +31,7 @@ function Sunset() {
         <h2 className="flex items-center gap-2 font-medium">{sunset} Sunset</h2>
         <p className="pt-4 text-2xl">{sunsetTime}</p>
       </div>
-      <p>Sunrise: {sunRiseTime}</p>
+      <p>{sunrise} Sunrise: {sunRiseTime}</p>
     </div>
   );
 }
