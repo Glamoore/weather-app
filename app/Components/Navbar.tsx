@@ -3,8 +3,12 @@
 import React from "react";
 import ThemeMenu from "./ThemeMenu/ThemeMenu";
 import SearchBar from "./SearchBar/SearchBar";
+import { useGlobalContext } from "../Context/globalContext";
 
 function Navbar() {
+    const { state } = useGlobalContext();
+
+ 
   return (
     <div className="flex items-center justify-between-full py-4">
       <div className="left"></div>
