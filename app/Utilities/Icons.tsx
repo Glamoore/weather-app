@@ -17,6 +17,7 @@ import {
   UsersRound,
   Thermometer,
   Droplets,
+  Eye,
 } from "lucide-react";
 
 export const searchIcon = <SquareTerminal size={16} />;
@@ -35,3 +36,4 @@ export const sun = <Sun size={15} />;
 export const people = <UsersRound size={15} />;
 export const thermometer = <Thermometer size={15} />;
 export const droplets = <Droplets size={15} />;
+export const eye = <Eye size={15} />;

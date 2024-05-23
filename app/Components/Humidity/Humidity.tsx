@@ -15,6 +15,7 @@ function Humidity() {
     return <Skeleton className="h-[12rem] w-full" />;
   }
 
+  // Destructuring  humidity from the Open Weather API
   const { humidity } = forecast?.main;
 
   // Creating descriptions for the various humidity levels
@@ -28,6 +29,7 @@ function Humidity() {
     return "Unavailable: Humidity data not available";
   };
 
+  // If the API data is available, render the population data in the DOM
   return (
     <div className="pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
       <div className="top">
