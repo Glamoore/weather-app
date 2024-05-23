@@ -19,6 +19,7 @@ import {
   Droplets,
   Eye,
   Gauge,
+  CalendarDays,
 } from "lucide-react";
 
 export const searchIcon = <SquareTerminal size={16} />;
@@ -39,3 +40,4 @@ export const thermometer = <Thermometer size={15} />;
 export const droplets = <Droplets size={15} />;
 export const eye = <Eye size={15} />;
 export const gauge = <Gauge size={15} />;
+export const calender = <CalendarDays size={15} />;

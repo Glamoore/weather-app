@@ -67,3 +67,8 @@ export const formatNumber = (num: number) => {
     return num;
   }
 };
+
+// Converting unix to day
+export const unixToDay = (unix: number) => {
+  return moment.unix(unix).format("ddd");
+};

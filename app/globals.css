@@ -75,7 +75,7 @@
   }
 }
 
-/* Styles for Air quality progress bar */
+/* Style for Air quality progress bar */
 .progress {
   background: linear-gradient(
     90deg,
@@ -86,4 +86,9 @@
     rgba(180, 96, 231, 1) 80%,
     rgba(178, 34, 34, 1) 100%
   );
+}
+
+/* Style for 5-day forecast temperature bar */
+.temperature {
+  background-image: linear-gradient(to right, #00dfff 0%, #00f9ff 20%, yellow);
 }

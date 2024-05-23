@@ -19,7 +19,7 @@ import moment from "moment";
 import { kelvinToCelsius } from "@/app/Utilities/Misc";
 
 function DailyWeatherForecast() {
-  // Retreiving air pollution data from the global context
+  // Retreiving hourly forecast data from the global context
   const { dailyForecast, forecast } = useGlobalContext();
 
   // Destructuring data from the Open Weather API
@@ -44,9 +44,9 @@ function DailyWeatherForecast() {
 
   // Accessing weather condition for switch statement
   // const { main: weatherMain } = weather[0];
-  const weatherMain = weather?.[0]
+  const weatherMain = weather?.[0];
 
-  // Importing Weather condition icons imported from Lucide react within Icon/Utilities
+  // Importing Weather condition icons for use within the component
   const getIcon = () => {
     switch (weatherMain) {
       case "Drizzle":
@@ -65,6 +65,8 @@ function DailyWeatherForecast() {
         return clearSky;
     }
   };
+
+  // Rendering the wind data in the client if the data is available
   return (
     <div
       className="pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8
