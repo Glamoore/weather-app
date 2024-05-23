@@ -1,6 +1,7 @@
 // Importing components
 import AirPollution from "./Components/AirPollution/AirPollution";
 import DailyWeatherForecast from "./Components/DailyWeatherForecast/DailyWeatherForecast";
+import FeelsLike from "./Components/Feelslike/FeelsLike";
 import Navbar from "./Components/Navbar";
 import Population from "./Components/Population/Population";
 import Sunset from "./Components/Sunset/Sunset";
@@ -24,6 +25,7 @@ export default function Home() {
             <DailyWeatherForecast />
             <UvIndex />
             <Population />
+            <FeelsLike />
           </div>
         </div>
       </div>

@@ -26,8 +26,6 @@ function DailyWeatherForecast() {
   const { weather } = forecast;
   const { city, list } = dailyForecast;
 
-  console.log(weather);
-
   // Checking if daily weather forecast data is available, if not return loading screen
   if (!dailyForecast || !city || !list) {
     return <Skeleton className="h-[12rem] w-full" />;
@@ -44,9 +42,11 @@ function DailyWeatherForecast() {
     }
   );
 
-  // Weather condition icons imported from Lucide react within Icon/Utilities
-  const { main: weatherMain } = weather[0];
+  // Accessing weather condition for switch statement
+  // const { main: weatherMain } = weather[0];
+  const weatherMain = weather?.[0]
 
+  // Importing Weather condition icons imported from Lucide react within Icon/Utilities
   const getIcon = () => {
     switch (weatherMain) {
       case "Drizzle":
@@ -72,7 +72,11 @@ function DailyWeatherForecast() {
     >
       <div className="h-full flex gap-10 overflow-hidden">
         {todaysForecast.length < 1 ? (
-          <div><h1 className="text-[3rem] line-through text-rose-500">No Data Available</h1></div>
+          <div>
+            <h1 className="text-[3rem] line-through text-rose-500">
+              No Data Available
+            </h1>
+          </div>
         ) : (
           <div className="w-full">
             <Carousel>
@@ -88,7 +92,9 @@ function DailyWeatherForecast() {
                           {moment(forecast.dt_txt).format("HH:mm")}
                         </p>
                         <p>{getIcon()}</p>
-                        <p className="mt-4">{kelvinToCelsius(forecast.main.temp)}°C</p>
+                        <p className="mt-4">
+                          {kelvinToCelsius(forecast.main.temp)}°C
+                        </p>
                       </CarouselItem>
                     );
                   }
