@@ -1,13 +1,23 @@
-// Copyright 2024 reecemoore
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+import axios from "axios";
+import { NextRequest, NextResponse } from "next/server";
+
+// Get request for pollution data from Open Weather
+export async function GET(req: NextRequest) {
+  try {
+    // API key from .env
+    const apiKey = process.env.OPENWEATHER_API_KEY;
+
+    // Default longitude and latitude
+    const lat = 51.5074;
+    const lon = 0.1276;
+    
+    const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    const res = await axios.get(url);
+
+    return NextResponse.json(res.data); 
+  } catch (error) {
+    console.log("Error receiving pollution data");
+    return new Response("Error fetching pollution data", { status: 500 });
+  }
+}
