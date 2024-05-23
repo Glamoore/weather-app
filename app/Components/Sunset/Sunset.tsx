@@ -11,10 +11,10 @@ function Sunset() {
   // Retreiving forecast data from the global context
   const { forecast } = useGlobalContext();
 
-    // Checking if sunset data is available, if not will return a loading screen
-    if (!forecast || !forecast?.sys) {
-      return <Skeleton className="h-[12rem] w-full" />;
-    }
+  // Check if API data is available, if not return a loading screen
+  if (!forecast || !forecast?.sys) {
+    return <Skeleton className="h-[12rem] w-full" />;
+  }
 
   // Retrieving sunset times and timezone for the location from Open Weather API via the Global Context
   const times = forecast?.sys?.sunset;
@@ -24,14 +24,16 @@ function Sunset() {
   const sunsetTime = unixToTime(times, timezone);
   const sunRiseTime = unixToTime(forecast?.sys?.sunrise, timezone);
 
-  // Rendering the sunset data in the client if the data is available
+  // If the API data is available, render the sunsetn & sunrise data in the DOM
   return (
     <div className="pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
       <div className="top">
         <h2 className="flex items-center gap-2 font-medium">{sunset} Sunset</h2>
         <p className="pt-4 text-2xl">{sunsetTime}</p>
       </div>
-      <p>{sunrise} Sunrise: {sunRiseTime}</p>
+      <p className="text-sm">
+        {sunrise} Sunrise: {sunRiseTime}
+      </p>
     </div>
   );
 }

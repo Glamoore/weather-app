@@ -12,7 +12,7 @@ function AirPollution() {
   // Retreiving air pollution data from the global context
   const { airQuality } = useGlobalContext();
 
-  // Providing forecast data from the global context
+  // Retrieving forecast data from the global context
   const { forecast } = useGlobalContext();
   const { name } = forecast;
 
@@ -46,7 +46,7 @@ function AirPollution() {
         {thermo} Air Pollution
       </h2>
       <Progress value={airQualityIndex} max={10} className="progress" />
-      <p>
+      <p className="text-sm">
         Air quality in {name} is {filteredAirQualityIndex?.description}.
       </p>
     </div>

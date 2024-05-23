@@ -28,36 +28,36 @@ function UvIndex() {
       return {
         text: "Low",
         protection:
-          "You can safely enjoy being outside - use sunscreen SPF 15+.",
+          "You can safely enjoy being outside - use sunscreen SPF 15+",
       };
     } else if (uvIndex <= 5) {
       return {
         text: "Moderate",
         protection:
-          "Take precautions if you will be outside, such as wearing a hat and wearing suncreen SPF 30+.",
+          "Take precautions if you will be outside, such as wearing a hat and wearing suncreen SPF 30+",
       };
     } else if (uvIndex <= 7) {
       return {
         text: "High",
         protection:
-          "Protect yourself against sun damage - use sunscreen SPF 30+.",
+          "Protect yourself against sun damage - use sunscreen SPF 30+",
       };
     } else if (uvIndex <= 10) {
       return {
         text: "Very High",
-        protection: "Use sunscreen SPF 30+ and seek shade after midday.",
+        protection: "Use sunscreen SPF 30+ and seek shade after midday",
       };
     } else if (uvIndex > 10) {
       return {
         text: "Extreme",
         protection:
-          "Use sunscreen SPF 30+ and avoid being outside between 10 am and 4 pm.",
+          "Use sunscreen SPF 30+ and avoid being outside between 10 am and 4 pm",
       };
     } else {
       return {
         text: "Extreme",
         protection:
-          "Protection against sun damage is essential. If possible avoid being outside.",
+          "Protection against sun damage is essential. If possible avoid being outside",
       };
     }
   };

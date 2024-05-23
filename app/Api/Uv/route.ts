@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 // Get request for UV data from Open Meteo
 export async function GET(req: NextRequest) {
   try {
-    const lat = 51.5074;
-    const lon = 0.1276;
+    const lat = 40.7128;
+    const lon = -74.006;
 
     const uvUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,uv_index_clear_sky_max&timezone=auto&forecast_days=1`;
 

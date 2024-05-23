@@ -6,8 +6,8 @@ export async function GET(req: NextRequest) {
     // API key from .env
     const apiKey = process.env.OPENWEATHER_API_KEY;
     // Default longitude and latitude
-    const lat = 51.5074;
-    const lon = 0.1276;
+    const lat = 40.7128;
+    const lon = -74.006;
 
     const dailyForecastURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
