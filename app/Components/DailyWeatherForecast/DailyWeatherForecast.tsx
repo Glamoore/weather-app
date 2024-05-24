@@ -74,7 +74,7 @@ function DailyWeatherForecast() {
     >
       <div className="h-full flex gap-10 overflow-hidden">
         {todaysForecast.length < 1 ? (
-          <div>
+          <div className="flex justify-center">
             <h1 className="text-[3rem] line-through text-rose-500">
               No Data Available
             </h1>
