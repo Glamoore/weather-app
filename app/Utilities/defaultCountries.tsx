@@ -23,7 +23,7 @@ const defaultCountries = [
   {
     name: "Tokyo",
     country: "JPN",
-    state: "New South Wales",
+    state: "Kanto",
     lat: 35.672855,
     lon: 139.817413,
   },

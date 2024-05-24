@@ -6,6 +6,7 @@ import { useGlobalContext } from '@/app/Context/globalContext';
 import { kelvinToCelsius } from '@/app/Utilities/Misc';
 import { clearSky, cloudy, drizzleIcon, navigation, rain, snow, thunderstorm } from '@/app/Utilities/Icons';
 import moment from 'moment';
+import { Skeleton } from '@/components/ui/skeleton';
 
 function Temperature() {
     // Providing forecast data from the global context
@@ -16,7 +17,7 @@ function Temperature() {
 
     // Checking if weather forecast data is available, if not return loading screen 
   if (!forecast || !weather) {
-    return <div>Loading...</div>;
+    return <Skeleton className="h-[12rem] w-full" />;
   }
 
   // Converting kelvin to celsuis for the client.
